@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rgraphApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http,loadData) {
   	/* jshint unused:false */	
     $scope.awesomeThings = [
       'me',
@@ -10,24 +10,32 @@ angular.module('rgraphApp')
     ];
 
 
-    $http.get('/files/Sample_data.json')
+    loadData()
        .success(function(data){
 
           var valueArray = [];
+          var timeArray = [];
+
           function arrange(element,i,array){
             valueArray.push(element.value);
-            return valueArray;
-
+            timeArray.push(new Date(element.time).toString());
           }
 
           for(var key in data){
             var datainner = data[key];
             for(var keyinner in datainner){
               var array = datainner[keyinner];
+              array.forEach(arrange);
             }
-            array.forEach(arrange);
-            console.log(valueArray);
           }
+
+          $scope.data = {
+            time: timeArray,
+            value: valueArray
+          };
+
+          console.log($scope.data);
+           
         });
 
   });
