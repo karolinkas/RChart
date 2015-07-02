@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rgraphApp')
-  .controller('MainCtrl', function ($scope, $http,loadData) {
+  .controller('MainCtrl', function ($scope, $http,loadData,$filter) {
   	/* jshint unused:false */	
     $scope.awesomeThings = [
       'me',
@@ -17,8 +17,10 @@ angular.module('rgraphApp')
         var timeArray = [];
 
         function arrange(element,i,array){
+          var day = new Date(element.time);
+          var niceDate = $filter('date')(day,'d');
           valueArray.push(element.value);
-          timeArray.push(new Date(element.time).toString());
+          timeArray.push(niceDate);
         }
 
         for(var key in data){
