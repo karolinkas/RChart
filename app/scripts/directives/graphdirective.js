@@ -6,6 +6,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 		scope: {}, 
 		restrict: 'A',
 		link: function($scope, element) {
+			/* jshint unused:false */	
 			element.append('<canvas id="cvs" width="600" height="250">[No canvas support]</canvas>');
 
 			$timeout(function(){
@@ -13,15 +14,15 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 	        id: 'cvs',
 	        data: [
 	               [
-	                [31, 28, null, 'Richard', 'Gradient(green:#0f0)'],
-	                [90,15, null, null, 'gradient(green:#0f0)']
+	                [31, 28, null, 'Richard', 'tomato'],
+	                [90,15, null, null, 'tomato']
 	               ],
 	               [
-	                [0, 28, null, 'Rachel', 'Gradient(green:#0f0)'],
-	                [30,65, null, null, 'Gradient(green:#0f0)']
+	                [0, 28, null, 'Rachel', 'tomato'],
+	                [30,65, null, null, 'tomato']
 	               ],
-	               [12, 28, null, 'Fred', 'Gradient(green:#0f0)'],
-	               [0, 85, null, 'Barney', 'Gradient(green:#0f0)']
+	               [12, 28, null, 'Fred', 'tomato'],
+	               [0, 85, null, 'Barney', 'tomato']
 	              ],
 	        options: {
 	            xmax: 120,
