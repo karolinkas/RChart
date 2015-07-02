@@ -1,8 +1,7 @@
-
 'use strict';
 
 angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($timeout){
-	/*jshint unused: false, undef:false */
+
 	return {
 		scope: {}, 
 		restrict: 'A',
@@ -10,19 +9,19 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 			element.append('<canvas id="cvs" width="600" height="250">[No canvas support]</canvas>');
 
 			$timeout(function(){
-				new RGraph.Gantt({
+				var gantt = new RGraph.Gantt({
 	        id: 'cvs',
 	        data: [
 	               [
-	                [31, 28, null, 'Richard', 'tomato'],
-	                [90,15, null, null, 'tomato']
+	                [31, 28, null, 'Richard', 'Gradient(green:#0f0)'],
+	                [90,15, null, null, 'gradient(green:#0f0)']
 	               ],
 	               [
-	                [0, 28, null, 'Rachel', 'tomato'],
-	                [30,65, null, null, 'tomato']
+	                [0, 28, null, 'Rachel', 'Gradient(green:#0f0)'],
+	                [30,65, null, null, 'Gradient(green:#0f0)']
 	               ],
-	               [12, 28, null, 'Fred', 'tomato'],
-	               [0, 85, null, 'Barney', 'tomato']
+	               [12, 28, null, 'Fred', 'Gradient(green:#0f0)'],
+	               [0, 85, null, 'Barney', 'Gradient(green:#0f0)']
 	              ],
 	        options: {
 	            xmax: 120,
