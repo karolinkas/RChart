@@ -4,9 +4,15 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 	/* jshint unused:false */	
 	return {
 		restrict: 'EA',
+		scope:{
+			data: '=data'
+		},
 		link: function(scope,element,attrs){
 
-			console.log(attrs.chartData);
+			scope.$watch('data', function(data) {
+        console.log(data);
+      });
+
 		}
 
 	};
