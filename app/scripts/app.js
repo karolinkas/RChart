@@ -2,8 +2,7 @@
 
 angular
   .module('rgraphApp', [
-    'ngRoute',
-    'ngTouch'
+    'ngRoute'
   ])
   .config(function ($routeProvider) {
     $routeProvider

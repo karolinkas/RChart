@@ -34,7 +34,9 @@ angular.module('rgraphApp')
           time: timeArray,
           value: valueArray
         };
-      console.log($scope.data.value.length);         
+
+
+      console.log($scope.data);         
       });
 
   });

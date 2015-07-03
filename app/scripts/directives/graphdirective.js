@@ -12,8 +12,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 
 			element.append('<canvas id="cvs" width="600" height="400">[No canvas support]<canvas>');
 
-			scope.$watch('data', function(data) {
-
+            function draw(){
+                var data = scope.data;
                 var line = new RGraph.Line({
                 id: 'cvs',
                 data: data.value,
@@ -41,13 +41,18 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                         var co = obj.context;              
                         RGraph.path(co, ['b', 'a', x, y, 3, 0, RGraph.TWOPI, false,'c','f', '#a00']);
                         }
-        		  }
-            	}).trace2({frames: 60}).on('beforedraw', function (obj){
-            		  RGraph.clear(obj.canvas, 'white');
-    			});
-
-
+                  }
+                }).trace2({frames: 60}).on('beforedraw', function (obj){
+                      RGraph.clear(obj.canvas, 'white');
+                });
+            }
+			
+            scope.$watch('data', function(newV, oldV, scope) {
+                if (angular.isDefined(newV)) {
+                    draw();
+                }
             });
+
 
 		}
 
