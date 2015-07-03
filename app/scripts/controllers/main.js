@@ -12,13 +12,12 @@ angular.module('rgraphApp')
 
     loadData()
       .success(function(data){
-
         var valueArray = [];
         var timeArray = [];
 
         function arrange(element,i,array){
           var day = new Date(element.time);
-          var niceDate = $filter('date')(day,'d');
+          var niceDate = $filter('date')(day,'MMM,dd');
           valueArray.push(element.value);
           timeArray.push(niceDate);
         }
@@ -35,7 +34,7 @@ angular.module('rgraphApp')
           time: timeArray,
           value: valueArray
         };
-         
+      console.log($scope.data.value.length);         
       });
 
   });
