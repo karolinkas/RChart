@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rgraphApp')
-  .controller('MainCtrl', function ($scope, $http,loadData,$filter) {
+  .controller('MainCtrl', function ($scope,loadData,$filter) {
   	/* jshint unused:false */	
     $scope.awesomeThings = [
       'me',

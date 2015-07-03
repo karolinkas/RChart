@@ -40,8 +40,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
                         RGraph.path(co, ['b', 'a', x, y, 3, 0, RGraph.TWOPI, false,'c','f', '#a00']);
-                    }
-        		}
+                        }
+        		  }
             	}).trace2({frames: 60}).on('beforedraw', function (obj){
             		  RGraph.clear(obj.canvas, 'white');
     			});
