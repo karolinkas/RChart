@@ -9,8 +9,8 @@ angular.module('rgraphApp')
       'everyone'
     ];
 
-
-    loadData()
+    $scope.url = '/files/Sample_data.json';
+    loadData($scope.url)
       .success(function(data){
         var valueArray = [];
         var timeArray = [];

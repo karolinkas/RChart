@@ -3,12 +3,13 @@
 angular.module('rgraphApp')
   .factory('loadData', function ($http) {
     var promise = null;
+    
 
-    return function() {
+    return function(url) {
       if (promise) {
         return promise;
       } else {
-        promise = $http.get('/files/Sample_data.json');
+        promise = $http.get(url);
         return promise;
       }
     };
