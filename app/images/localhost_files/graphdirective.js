@@ -10,12 +10,13 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
             less: '@less'
 		},
 		link: function(scope,element,attrs){
-            
+
+			element.append('<canvas id="cvs" width="600" height="400">[No canvas support]<canvas>');
+
             function draw(){
-                
                 var data = scope.data;
                 var line = new RGraph.Line({
-                id: name,
+                id: 'cvs',
                 data: data.value,
                 options: {
                     numxticks: 11,
@@ -49,10 +50,6 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 			
             scope.$watch('data', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)) {
-                    var id = 1;
-                    var name = 'name' + id++;
-                    console.log(name);
-                    element.append('<canvas id='+name+' width="600" height="400">[No canvas support]<canvas>');
                     draw();
                 }
             });

@@ -36,11 +36,10 @@ angular.module('rgraphApp')
           value: valueArray
         };
 
-        // $scope.less = function(){
-        //   console.log('jaja');
-        //   $scope.data.value.splice(0,10);
-        //   return $scope.data;
-        // }; 
+        $scope.less = function(){
+          console.log("jaja");
+          $scope.data.value.splice(0,10);
+        }; 
 
         console.log($scope.data);         
       });
