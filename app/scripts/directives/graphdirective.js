@@ -54,6 +54,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 line.set('tooltips', tooltip);
             }
 
+           
+
 			
             scope.$watch('data', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)) {

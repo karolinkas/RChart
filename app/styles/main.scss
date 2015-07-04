@@ -78,10 +78,17 @@ body {
 
 
   h1{
-  color:#5e5e5e;
-  // color: white;
-  text-align: left;
-  font-size: 33px;
+    color:#5e5e5e;
+    text-align: left;
+    font-size: 33px;
+    line-height: 0.8;
+  }
+  h2{
+    color:#5e5e5e;
+    font-size: 18px;
+    font-weight: 200;
+    text-align: left;
+    margin-top: 0px;
   }
 }
 
