@@ -3,6 +3,7 @@
 angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($timeout){
 	/* jshint unused:false */
 	/* global RGraph */	
+    var id = 1;
 	return {
 		restrict: 'EA',
 		scope:{
@@ -11,7 +12,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 		},
 		link: function(scope,element,attrs){
             
-            function draw(){
+            function draw(name){
                 
                 var data = scope.data;
                 var line = new RGraph.Line({
@@ -30,7 +31,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     gutterBottom: 80,
                     labels: data.time,
                     units: {
-                            post: 'k$'
+                            post: '$'
                         },
                     shadow: false,
                     noxaxis: true,
@@ -45,15 +46,22 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 }).trace2({frames: 60}).on('beforedraw', function (obj){
                       RGraph.clear(obj.canvas, 'white');
                 });
+
+                var tooltip = data.value.map(function(current,i,array){
+                    return 'Cost: '+ array[i].toFixed(2).toString()+'$';
+                });
+
+                line.set('tooltips', tooltip);
             }
+
 			
             scope.$watch('data', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)) {
-                    var id = 1;
+ 
                     var name = 'name' + id++;
                     console.log(name);
-                    element.append('<canvas id='+name+' width="600" height="400">[No canvas support]<canvas>');
-                    draw();
+                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    draw(name);
                 }
             });
 

@@ -15,6 +15,22 @@ body {
   background-color: #5e5e5e;
 }
 
+.RGraph_tooltip{
+  background-color: rgba(50, 50, 50, 0.8) !important;
+  color: white !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  width: none !important;
+  text-align: center;
+}
+
+#__rgraph_tooltip_pointer__{
+  -webkit-filter: brightness(0.25);
+}
+
+.grayscale {-webkit-filter: grayscale(100%);}
 .ted:after { background-size: 30px ;}
 .ted { background-color: #00faa2 ;}
 

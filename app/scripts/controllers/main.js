@@ -41,8 +41,7 @@ angular.module('rgraphApp')
         //   $scope.data.value.splice(0,10);
         //   return $scope.data;
         // }; 
-
-        console.log($scope.data);         
+      
       });
 
   });
