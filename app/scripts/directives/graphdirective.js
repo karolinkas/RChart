@@ -18,8 +18,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 id: name,
                 data: data.value,
                 options: {
-                    numxticks: 11,
-                    numyticks: 5,
+                    // numxticks: 11,
+                    // numyticks: 5,
                     backgroundGridVlines: false,
                     backgroundGridBorder: false,
                     colors: ['red'],
@@ -33,10 +33,13 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                             post: '$'
                         },
                     shadow: false,
-                    noxaxis: true,
                     textSize: 10,
                     textColor: '#999',
                     textAngle: 90,
+                    crosshairs: {
+                                        self: true
+                                        // snap: true
+                                    },
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
                         RGraph.path(co, ['b', 'a', x, y, 3, 0, RGraph.TWOPI, false,'c','f', '#a00']);
@@ -53,9 +56,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 line.set('tooltips', tooltip);
             }
 
-           
-
-			
+		
             scope.$watch('data', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)) {
  
