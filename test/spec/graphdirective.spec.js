@@ -1,21 +1,32 @@
-'use strict';
+describe('Directive: spinInput', function() {
+    
+    var scope, compile, validHTML;;
+    
+    validHTML = '<canvas></canvas>';
+    
+    beforeEach(module('rgraphApp'));
+    
+    beforeEach(inject(function($compile, $rootScope, $templateCache){
 
-describe('Directive: graphDirective', function () {
-
-  // load the directive's module and view
-  beforeEach(module('rgraphApp'));
-
-  var element, scope;
-
-  beforeEach(function () {
-      element = angular.element('<div graph-directive data=\'data\'>'+'</div>')
-  
-  });
-
-  it('should attach a canvas element', function () {
-    expect(element.length).toBe(1);
-  });
-
-
-
+        scope = $rootScope.$new();
+        compile = $compile;
+    }));
+    
+    function create() {
+        var elem, compiledElem;
+        elem = angular.element(validHTML);
+        compiledElem = compile(elem)(scope);
+        scope.data = {},
+        scope.$digest();
+        
+        return compiledElem;    
+    }
+    
+    
+    it('canvas should be created', function() {
+        var el = create();
+        expect(el.length).toBe(1);
+    });
+    
+    
 });
