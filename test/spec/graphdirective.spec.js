@@ -1,23 +1,21 @@
-describe('graphDirective', function () {
-  var element, scope;
+'use strict';
 
+describe('Directive: graphDirective', function () {
+
+  // load the directive's module and view
   beforeEach(module('rgraphApp'));
 
-  beforeEach(inject(function($rootScope, $compile){
+  var element, scope;
 
-    element = angular.element('<div graph-directive data="data">'+'</div>');
+  beforeEach(function () {
+      element = angular.element('<div graph-directive data=\'data\'>'+'</div>')
+  
+  });
 
-    scope = $rootScope.$new();
-    scope.data = []; 
+  it('should attach a canvas element', function () {
+    expect(element.length).toBe(1);
+  });
 
-    $compile(element)(scope);
-    $scope.$digest();
 
-    it('should create canvas', function() {
-      var canvas = element.find('canvas');
-      expect(canvas.length).toBe(1);
-    }) 
-
-  }));
 
 });

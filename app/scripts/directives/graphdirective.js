@@ -61,7 +61,6 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 if (angular.isDefined(newV)) {
  
                     var name = 'name' + id++;
-                    console.log(name);
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
                     draw(name);
                 }

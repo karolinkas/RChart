@@ -11,7 +11,7 @@ describe('Service: loadData', function () {
     loadData = _loadData_;
   }));
 
-  it('should do something', function () {
+  it('should instantiate Object', function () {
     expect(!!loadData).toBe(true);
   });
 
