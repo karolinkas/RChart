@@ -1,8 +1,6 @@
-describe('Directive: spinInput', function() {
+describe('Directive: graphDirective', function() {
     
     var scope, compile, validHTML;;
-    
-    validHTML = '<canvas></canvas>';
     
     beforeEach(module('rgraphApp'));
     
@@ -14,7 +12,7 @@ describe('Directive: spinInput', function() {
     
     function create() {
         var elem, compiledElem;
-        elem = angular.element(validHTML);
+        elem = angular.element('<div graph-directive></div>');
         compiledElem = compile(elem)(scope);
         scope.data = {},
         scope.$digest();
@@ -23,10 +21,10 @@ describe('Directive: spinInput', function() {
     }
     
     
-    it('canvas should be created', function() {
+    it('directive should be created', function() {
         var el = create();
         expect(el.length).toBe(1);
     });
-    
+
     
 });

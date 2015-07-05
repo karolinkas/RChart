@@ -5,10 +5,9 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 	/* global RGraph */	
     var id = 1;
 	return {
-		restrict: 'EA',
+		restrict: 'A',
 		scope:{
-			data: '=data',
-            less: '@less'
+			data: '=data'
 		},
 		link: function(scope,element,attrs){
             
