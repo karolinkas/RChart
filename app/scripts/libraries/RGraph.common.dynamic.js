@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 // version: 2015-06-28
     /**
     * o--------------------------------------------------------------------------------o
@@ -1062,3 +1063,4 @@
 
 // End module pattern
 })(window, document);
+/* jshint ignore:end */

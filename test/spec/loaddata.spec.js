@@ -2,7 +2,6 @@
 
 describe('Service: loadData', function () {
 
-  // load the service's module
   beforeEach(module('rgraphApp'));
 
   // instantiate service
@@ -11,6 +10,7 @@ describe('Service: loadData', function () {
     loadData = _loadData_;
   }));
 
+  // check if instance exists
   it('should instantiate Object', function () {
     expect(!!loadData).toBe(true);
   });

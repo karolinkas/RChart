@@ -10,7 +10,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 			data: '=data'
 		},
 		link: function(scope,element,attrs){
-            
+        
+        // creating a draw function according to the guidelines of the RGraph docs   
             function draw(name){
                 
                 var data = scope.data;
@@ -18,8 +19,6 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 id: name,
                 data: data.value,
                 options: {
-                    // numxticks: 11,
-                    // numyticks: 5,
                     backgroundGridVlines: false,
                     backgroundGridBorder: false,
                     colors: ['red'],
@@ -38,7 +37,6 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     textAngle: 90,
                     crosshairs: {
                                         self: true
-                                        // snap: true
                                     },
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
@@ -49,6 +47,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                       RGraph.clear(obj.canvas, 'white');
                 });
 
+                // custom tooltip with less decimal places
                 var tooltip = data.value.map(function(current,i,array){
                     return 'Cost: '+ array[i].toFixed(2).toString()+'$';
                 });
@@ -56,7 +55,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 line.set('tooltips', tooltip);
             }
 
-		
+		    // Appending canvas and drawing chart as soon as data is defined
             scope.$watch('data', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)) {
  

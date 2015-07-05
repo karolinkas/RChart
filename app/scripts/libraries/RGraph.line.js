@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 // version: 2015-06-28
     /**
     * o--------------------------------------------------------------------------------o
@@ -218,7 +219,7 @@
             'chart.units.pre':              '',
             'chart.scale.zerostart':        false,
             'chart.scale.decimals':         null,
-            'chart.scale.point':            '.',
+            'chart.scale.point':            '.5',
             'chart.scale.thousand':         ',',
             'chart.crosshairs':             false,
             'chart.crosshairs.color':       '#333',
@@ -3878,3 +3879,4 @@
             RG.parseObjectStyleConfig(this, conf.options);
         }
     };
+/* jshint ignore:end */

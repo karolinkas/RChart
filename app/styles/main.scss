@@ -26,6 +26,10 @@ body {
   text-align: center;
 }
 
+chart.crosshairs{
+  opacity: 0.2;
+}
+
 #__rgraph_tooltip_pointer__{
   -webkit-filter: brightness(0.25);
 }

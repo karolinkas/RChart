@@ -39,3 +39,4 @@ A factory is giving you the possibility to do http-requests if you pass in an UR
 Some basic tests are checking for the creation of elements.
 
 On mouseover a tooltip shows you each dates cost.
+The crosshairs should fade out when the tooltip is showing (trying to improve).

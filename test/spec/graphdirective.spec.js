@@ -1,21 +1,24 @@
+'use strict';
+
 describe('Directive: graphDirective', function() {
     
-    var scope, compile, validHTML;;
+    var scope, compile;
     
     beforeEach(module('rgraphApp'));
     
-    beforeEach(inject(function($compile, $rootScope, $templateCache){
+    beforeEach(inject(function($compile, $rootScope){
 
         scope = $rootScope.$new();
         compile = $compile;
     }));
     
+    // attaching scope to compiled element
     function create() {
         var elem, compiledElem;
         elem = angular.element('<div graph-directive></div>');
         compiledElem = compile(elem)(scope);
         scope.data = {},
-        scope.$digest();
+        scope.$digest(); // jshint ignore:line
         
         return compiledElem;    
     }
