@@ -220,7 +220,7 @@
             'chart.scale.zerostart':        false,
             'chart.scale.decimals':         null,
             'chart.scale.point':            '.5',
-            'chart.scale.thousand':         ',',
+            'chart.scale.thousand':       ',',
             'chart.crosshairs':             false,
             'chart.crosshairs.color':       '#333',
             'chart.crosshairs.hline':       true,

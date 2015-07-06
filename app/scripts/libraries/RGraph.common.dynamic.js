@@ -411,7 +411,8 @@
     
 
                 if (e.target && e.target.__object__ && e.target.__object__.Get('chart.crosshairs')) {
-                    RGraph.DrawCrosshairs(e, e.target.__object__);
+                    RGraph.DrawCrosshairs(e, e.target.__object__); 
+                    RGraph.HideTooltip();
                 }
             
             
