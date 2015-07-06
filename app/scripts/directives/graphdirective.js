@@ -28,6 +28,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     gutterTop: 50,
                     gutterBottom: 80,
                     labels: data.time,
+                    noxaxis: true,
                     units: {
                             post: '$'
                         },
@@ -36,7 +37,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     textColor: '#999',
                     textAngle: 90,
                     crosshairs: {
-                        self: true
+                        self: true,
+                        snap: true
                                     },
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
