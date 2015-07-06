@@ -11,7 +11,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 		},
 		link: function(scope,element,attrs){
         
-        // creating a draw function according to the guidelines of the RGraph docs   
+            // creating a draw function according to the guidelines of the RGraph docs   
             function draw(name){
                 
                 var data = scope.data;
@@ -36,7 +36,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     textColor: '#999',
                     textAngle: 90,
                     crosshairs: {
-                                        self: true
+                        self: true
                                     },
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              

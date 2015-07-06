@@ -10,6 +10,7 @@ describe('Directive: graphDirective', function() {
 
         scope = $rootScope.$new();
         compile = $compile;
+        
     }));
     
     // attaching scope to compiled element

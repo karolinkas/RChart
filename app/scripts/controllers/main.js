@@ -43,10 +43,8 @@ angular.module('rgraphApp')
         }
         
         var length = $scope.data.time.length;
-        var firstString = $scope.data.time[0];
-        var lastString = $scope.data.time[length-1];
-        $scope.first = dateExtender(firstString); 
-        $scope.last = dateExtender(lastString);
+        $scope.first = dateExtender($scope.data.time[0]); 
+        $scope.last = dateExtender($scope.data.time[length-1]);
       
       });
 
