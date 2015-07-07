@@ -1,6 +1,9 @@
 <div class="jumbotron ted pb-pattern candy-light">
   <h1>Daily Powercost</h1>
   <h2>Deposit 5k.Block 132 from <b>{{first}}</b> to <b>{{last}}</b></h2>
+	<select name="myselect" ng-model="currentOne"
+          ng-options="i.time for i in arrayBoth">
+	</select>
 	<div graph-directive data='data'></div>
 </div>
 
