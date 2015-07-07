@@ -7,17 +7,24 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 	return {
 		restrict: 'A',
 		scope:{
-			data: '=data'
+			data: '=data',
+            first: '=',
+            last: '='
 		},
 		link: function(scope,element,attrs){
-        
+
+            var first = scope.first;
+            var last = scope.last;
+            
             // creating a draw function according to the guidelines of the RGraph docs   
-            function draw(name){
+            function draw(name,first,last){
                 
-                var data = scope.data;
+                var dataY= scope.data.value.slice(first,last);
+                var dataX= scope.data.time.slice(first,last);
+
                 var line = new RGraph.Line({
                 id: name,
-                data: data.value,
+                data: dataY, 
                 options: {
                     backgroundGridVlines: false,
                     backgroundGridBorder: false,
@@ -27,7 +34,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     gutterRight: 60,
                     gutterTop: 50,
                     gutterBottom: 80,
-                    labels: data.time,
+                    labels: dataX,
                     noxaxis: true,
                     units: {
                             post: '$'
@@ -47,7 +54,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                 });
 
                 // custom tooltip with less decimal places
-                var tooltip = data.value.map(function(current,i,array){
+                var tooltip = dataY.map(function(current,i,array){
                     return 'Cost: '+ array[i].toFixed(2).toString()+'$';
                 });
 
@@ -62,8 +69,29 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     var name = 'name' + id++;
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
                     draw(name);
+                } 
 
-                }
+            });
+
+            scope.$watch('first', function(newV, oldV, scope) {
+                if (newV>0) {
+                    var name = 'name' + id++;
+                    angular.element('canvas').remove();
+                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    draw(name,newV);
+                } 
+
+            });
+
+            scope.$watch('last', function(newV, oldV, scope) {
+                if (newV<34) {
+                    console.log('changed');
+                    var name = 'name' + id++;
+                    angular.element('canvas').remove();
+                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    draw(name,newV);
+                } 
+
             });
 
 
