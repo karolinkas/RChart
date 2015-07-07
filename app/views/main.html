@@ -1,13 +1,19 @@
 <div ng-controller="MainCtrl" class="jumbotron ted pb-pattern candy-light">
-  <h1>Daily Powercost</h1>
-  <h2>Deposit 5k.Block 132 from <b>	<select id="first" ng-model="first" ng-change=update()
-          ng-options="index as moment for (index,moment) in data.time">
-	</select></b> to <b>	<select id="last" ng-model="last" ng-change=update()
-          ng-options="index as moment for (index,moment) in data.time">
-	</select>
-  </b></h2>
-
-
-	<div graph-directive data='data' first='first' last='last'></div>
+    <h1>Daily Powercost</h1>
+    <h2>Deposit 5k.Block 132 from 
+    	<select id="first" 
+    					ng-model="first" 
+    					ng-change=update()
+        			ng-options="index as moment for (index,moment) in data.time">
+			</select>
+		 	to 
+			<select id="last" 
+							ng-model="last" 
+							ng-change=update()
+        			ng-options="index as moment for (index,moment) in data.time">
+			</select>
+  	</h2>
+    <div graph-directive data='data' first='first' last='last'></div>
 </div>
+
 

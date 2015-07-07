@@ -19,6 +19,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
             // creating a draw function according to the guidelines of the RGraph docs   
             function draw(name,first,last){
                 
+                //cutting data according to selected indizes
                 var dataY= scope.data.value.slice(first,last);
                 var dataX= scope.data.time.slice(first,last);
 
@@ -73,23 +74,24 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 
             });
 
+            // when user selects a new start date chart gets drawn again
             scope.$watch('first', function(newV, oldV, scope) {
-                if (newV>0) {
+                if (newV>=0) {
                     var name = 'name' + id++;
                     angular.element('canvas').remove();
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,newV);
+                    draw(name,newV,last);
                 } 
 
             });
 
+            // when user selects a new end date chart gets drawn again
             scope.$watch('last', function(newV, oldV, scope) {
-                if (newV<34) {
-                    console.log('changed');
+                if (newV<35) {
                     var name = 'name' + id++;
                     angular.element('canvas').remove();
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,newV);
+                    draw(name,first,newV);
                 } 
 
             });

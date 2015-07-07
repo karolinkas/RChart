@@ -39,6 +39,8 @@ A factory is giving you the possibility to do http-requests if you pass in an UR
 Some basic tests are checking for the creation of elements.
 
 On mouseover a tooltip shows you each dates cost.
-The crosshairs should fade out when the tooltip is showing (trying to improve).
+Using a selector the user can select the first and last date to have an influence one the min and max value on the x-axis.
+It could be nice to update the charts rather than removing them and drawing new ones.
 
-I´m making a selector to change the min and max values on the x-axis dynamically.
+
+

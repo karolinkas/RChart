@@ -35,7 +35,6 @@ angular.module('rgraphApp')
           value: valueArray,
         };
 
-        // console.log($scope.data);
     
         // creating an longer version of the datestrings for display in title
         function dateExtender(dateString){
@@ -44,22 +43,12 @@ angular.module('rgraphApp')
           return longDate; 
         }
         
-        // getting start end end value to show in expression
+        // getting start end end value to cut data
         var length = $scope.data.time.length;
-        $scope.first = $scope.data.time[0]; 
+        $scope.first = $scope.data.time[0];
         $scope.last = $scope.data.time[length-1];
 
-        $scope.update = function(){
-          // console.log($scope.first);
-          // $scope.last = $scope.last;
-          // var indexStart = $scope.data.indexOf($scope.data.time[0]);
-          // console.log(indexStart);
-          // var indexEnd = 0;
-
-          // console.log($scope.first,$scope.last);
-          // $scope.data.sliced = $scope.data.time.slice(indexStart,indexEnd);
-          // console.log($scope.data.sliced);
-        };
+        // })
 
       });
 

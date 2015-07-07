@@ -15,6 +15,14 @@ body {
   background-color: #5e5e5e;
 }
 
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   padding: 3px;
+   font-weight: 200;
+}
+
 .RGraph_tooltip{
   background-color: rgba(50, 50, 50, 0.8) !important;
   color: white !important;
