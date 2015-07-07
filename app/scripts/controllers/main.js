@@ -12,7 +12,7 @@ angular.module('rgraphApp')
         var valueArray = [];
         var timeArray = [];
 
-    // creating arrays for x and y values of chart
+        // creating arrays for x and y values of chart
         function arrangeInArrays(element,i,array){
           var day = new Date(element.time);
           var niceDate = $filter('date')(day,'MMM,dd');
@@ -20,7 +20,7 @@ angular.module('rgraphApp')
           timeArray.push(niceDate);
         }
 
-    // entering JSON to extract only the needed content
+        // entering JSON to extract only the needed content
         for(var key in data){
           var datainner = data[key];
           for(var keyinner in datainner){
@@ -29,13 +29,15 @@ angular.module('rgraphApp')
           }
         }
 
-    // attaching the to arrays needed for chart display to one data object
+        // attaching the to arrays needed for chart display to one data object
         $scope.data = {
           time: timeArray,
           value: valueArray
         };
+
+        console.log($scope.data.value.length);
     
-    // creating an longer version of the datestrings for display in title
+        // creating an longer version of the datestrings for display in title
         function dateExtender(dateString){
           var dateObject = new Date(dateString);
           var longDate = $filter('date')(dateObject,'longDate');
