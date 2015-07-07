@@ -40,3 +40,5 @@ Some basic tests are checking for the creation of elements.
 
 On mouseover a tooltip shows you each dates cost.
 The crosshairs should fade out when the tooltip is showing (trying to improve).
+
+I´m making a selector to change the min and max values on the x-axis dynamically.

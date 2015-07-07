@@ -25,21 +25,15 @@ angular.module('rgraphApp')
           var datainner = data[key];
           for(var keyinner in datainner){
             var arrayBoth = datainner[keyinner];
-            $scope.arrayBoth = arrayBoth;
             arrayBoth.forEach(arrangeInArrays);
           }
         }
-
-        $scope.currentOne = $scope.arrayBoth[0];
-        $scope.currentOne = $scope.arrayBoth[0];
-        console.log($scope.currentOne);
 
         // attaching the to arrays needed for chart display to one data object
         $scope.data = {
           time: timeArray,
           value: valueArray
         };
-
     
         // creating an longer version of the datestrings for display in title
         function dateExtender(dateString){
@@ -51,7 +45,11 @@ angular.module('rgraphApp')
         var length = $scope.data.time.length;
         $scope.first = dateExtender($scope.data.time[0]); 
         $scope.last = dateExtender($scope.data.time[length-1]);
-      
+
+        $scope.update = function(){
+          console.log($scope.first,$scope.last);
+        };
+
       });
 
   });
