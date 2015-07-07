@@ -5,7 +5,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('rgraphApp'));
 
   var MainCtrl,
-    scope, loadData, httpBackend;
+    scope, httpBackend;
 
   beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
     scope = $rootScope.$new();
@@ -36,7 +36,7 @@ describe('Controller: MainCtrl', function () {
     expect(scope.url).toBe('/files/Sample_data.json');
   });
 
-  it('load the acutal data', function() {
+  it('check if data is on controller scopes', function() {
     httpBackend.expectGET(scope.url);
     expect(scope.data).toEqual({ time: [ 'Feb,01', 'Feb,02' ], value: [ 0, 0 ] });
    

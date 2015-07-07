@@ -36,7 +36,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     textSize: 10,
                     textColor: '#999',
                     textAngle: 90,
-                    crosshairs: true,
+                    // crosshairs: true,
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
                         RGraph.path(co, ['b', 'a', x, y, 3, 0, RGraph.TWOPI, false,'c','f', '#a00']);
