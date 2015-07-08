@@ -71,26 +71,26 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
             },200);
 
             // when user selects a new start date chart gets drawn again
-            scope.$watchGroup(['first','last'], function(newV, oldV, scope) {
-                var name = 'name' + id++;
-                if (newV[0]>=0) {
-                    angular.element('canvas').remove();
-                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,newV[0],last);
-                }  else if (newV[1]<35) {
-                    angular.element('canvas').remove();
-                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,first,newV[1]);
-                } 
+                        scope.$watch('first', function(newV, oldV, scope) {
+                            if (newV>=0&&angular.isDefined(newV)) {
+                                var name = 'name' + id++;
+                                angular.element('canvas').remove();
+                                element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                                draw(name,newV,last);
+                            } 
 
-            });
+                        });
 
-            // when user selects a new end date chart gets drawn again
-            // scope.$watch('last', function(newV, oldV, scope) {
+                        // when user selects a new end date chart gets drawn again
+                        scope.$watch('last', function(newV, oldV, scope) {
+                            if (newV<35&&angular.isDefined(newV)) {
+                                var name = 'name' + id++;
+                                angular.element('canvas').remove();
+                                element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                                draw(name,first,newV);
+                            } 
 
-
-            // });
-
+                        });
 
 		}
 
