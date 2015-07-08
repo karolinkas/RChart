@@ -63,18 +63,16 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 
             }
 
-		    // Appending canvas and drawing chart as soon as data is defined
-            scope.$watch('data', function(newV, oldV, scope) {
-                if (angular.isDefined(newV)) {
- 
+		    // Appending canvas when data has loaded asynchronously, 
+            // I remove the watchtask here since it doesn´t need to watch continously,
+            // but only for the initial drawing
+            $timeout(function(first,last){
                     var name = 'name' + id++;
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name);
-                } 
+                    draw(name,first,last);
+            },100);
 
-            });
-
-            // when user selects a new start date chart gets drawn again
+          // when user selects a new start date chart gets drawn again
             scope.$watch('first', function(newV, oldV, scope) {
                 if (newV>=0) {
                     var name = 'name' + id++;
