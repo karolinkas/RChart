@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($timeout){
+angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', function($timeout,$compile){
 	/* jshint unused:false */
 	/* global RGraph */	
     var id = 1;
@@ -44,7 +44,6 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
                     textSize: 10,
                     textColor: '#999',
                     textAngle: 90,
-                    // crosshairs: true,
                     tickmarks: function (obj, data, value, index, x, y, color, prevX, prevY){
                         var co = obj.context;              
                         RGraph.path(co, ['b', 'a', x, y, 3, 0, RGraph.TWOPI, false,'c','f', '#a00']);
@@ -66,31 +65,54 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
 		    // Appending canvas and drawing chart as soon as data is defined
             $timeout(function(){
                     var name = 'name' + id++;
+                    // placeholder that select tags are gonna be attached to
+                    var placeHolder = angular.element('h2'); 
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    // tags that were in the template before get added dynamically now to make directive more reusable
+                    var selectStart = angular.element('<select id="first"'+ 
+                                                      'ng-model="first"'+
+                                                      'ng-options="index as moment for (index,moment) in data.time">'+
+                                                      '</select>'+
+                                                      '<span> and </span>');
+                    var selectEnd = angular.element('<select id="last"'+ 
+                                                    'ng-model="last"'+ 
+                                                    'ng-options="index as moment for (index,moment) in data.time">'+
+                    
+                                                    '</select>)');
+                    placeHolder.append(selectStart);
+                    placeHolder.append(selectEnd);
+                    // compiling them manually since link-function doesn`t have access to the scope
+                    $compile(selectStart)(scope);
+                    $compile(selectEnd)(scope);
+
                     draw(name);
             },200);
 
             // when user selects a new start date chart gets drawn again
-                        scope.$watch('first', function(newV, oldV, scope) {
-                            if (newV>=0&&angular.isDefined(newV)) {
-                                var name = 'name' + id++;
-                                angular.element('canvas').remove();
-                                element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                                draw(name,newV,last);
-                            } 
+            scope.$watch('first', function(newV, oldV, scope) {
+                if (angular.isDefined(newV)){
+                    if (newV>=0) {
+                        var name = 'name' + id++;
+                        angular.element('canvas').remove();
+                        element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                        draw(name,newV,last);
+                    } 
+                }
 
-                        });
+            });
 
-                        // when user selects a new end date chart gets drawn again
-                        scope.$watch('last', function(newV, oldV, scope) {
-                            if (newV<35&&angular.isDefined(newV)) {
-                                var name = 'name' + id++;
-                                angular.element('canvas').remove();
-                                element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                                draw(name,first,newV);
-                            } 
+            // when user selects a new end date chart gets drawn again
+            scope.$watch('last', function(newV, oldV, scope) {
+                 if (angular.isDefined(newV)){
+                    if (newV<35) {
+                        var name = 'name' + id++;
+                        angular.element('canvas').remove();
+                        element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                        draw(name,first,newV);
+                    } 
+                } 
 
-                        });
+            });
 
 		}
 
