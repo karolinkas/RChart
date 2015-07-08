@@ -64,37 +64,32 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout', function($t
             }
 
 		    // Appending canvas and drawing chart as soon as data is defined
-            scope.$watch('data', function(newV, oldV, scope) {
-                if (angular.isDefined(newV)) {
- 
+            $timeout(function(){
                     var name = 'name' + id++;
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
                     draw(name);
-                } 
-
-            });
+            },200);
 
             // when user selects a new start date chart gets drawn again
-            scope.$watch('first', function(newV, oldV, scope) {
-                if (newV>=0) {
-                    var name = 'name' + id++;
+            scope.$watchGroup(['first','last'], function(newV, oldV, scope) {
+                var name = 'name' + id++;
+                if (newV[0]>=0) {
                     angular.element('canvas').remove();
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,newV,last);
+                    draw(name,newV[0],last);
+                }  else if (newV[1]<35) {
+                    angular.element('canvas').remove();
+                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    draw(name,first,newV[1]);
                 } 
 
             });
 
             // when user selects a new end date chart gets drawn again
-            scope.$watch('last', function(newV, oldV, scope) {
-                if (newV<35) {
-                    var name = 'name' + id++;
-                    angular.element('canvas').remove();
-                    element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
-                    draw(name,first,newV);
-                } 
+            // scope.$watch('last', function(newV, oldV, scope) {
 
-            });
+
+            // });
 
 
 		}

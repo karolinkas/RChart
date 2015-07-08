@@ -48,7 +48,6 @@ angular.module('rgraphApp')
         $scope.first = $scope.data.time[0];
         $scope.last = $scope.data.time[length-1];
 
-        // })
 
       });
 
