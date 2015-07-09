@@ -16,12 +16,22 @@ body {
 }
 
 select {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
+   // -webkit-appearance: none;
+   // -moz-appearance: none;
+   // appearance: none;
    padding: 3px;
-   font-weight: 200;
+   font-weight: 400;
+   outline: none;
+   border: none;
+   border-radius: none;
 }
+
+select:hover {
+  outline: none;
+  background-color: MISTYROSE;
+}
+
+
 
 .RGraph_tooltip{
   background-color: rgba(50, 50, 50, 0.8) !important;

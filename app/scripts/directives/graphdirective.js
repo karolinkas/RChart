@@ -68,8 +68,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     // placeholder that select tags are gonna be attached to
                     var placeHolder = angular.element('h2'); 
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                    
                     // tags that were in the template before get added dynamically now to make directive more reusable
-
                     var selectStart = angular.element('<select id="first"'+ 
                                                       'ng-model="first"'+
                                                       'ng-options="index as moment for (index,moment) in data.time">'+
@@ -88,6 +88,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
    
                     placeHolder.append(selectStart);
                     placeHolder.append(selectEnd);
+
                     // compiling them manually since link-function doesn`t have access to the scope
                     $compile(selectStart)(scope);
                     $compile(selectEnd)(scope);
@@ -99,11 +100,10 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
             scope.$watch('first', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)){
                     if (newV>=0) {
-                        // RGraph.Clear();
-                        var name = 'name' + id++;
-                        angular.element('canvas').remove();
-                        element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                        RGraph.Reset(document.getElementById('name1'));
+                        var name = 'name1';
                         draw(name,newV,last);
+
                     } 
                 }
 
@@ -113,9 +113,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
             scope.$watch('last', function(newV, oldV, scope) {
                  if (angular.isDefined(newV)){
                     if (newV<35) {
-                        var name = 'name' + id++;
-                        angular.element('canvas').remove();
-                        element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
+                        var name = 'name1';
                         draw(name,first,newV);
                     } 
                 } 
