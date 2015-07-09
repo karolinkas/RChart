@@ -9,6 +9,7 @@ angular.module('rgraphApp')
     // using loadData service to get JSON
     loadData($scope.url)
       .success(function(data){
+
         var valueArray = [];
         var timeArray = [];
 
