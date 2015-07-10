@@ -66,7 +66,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
             $timeout(function(){
                     var name = 'name' + id++;
                     // placeholder that select tags are gonna be attached to
-                    var placeHolder = angular.element('h2'); 
+                    var placeHolder = angular.element('<h2>{{data.title}} from </h2>'); 
+                    element.append(placeHolder);
                     element.append('<canvas id="' + name + '" width="600" height="400">[No canvas support]<canvas>');
                     
                     // tags that were in the template before get added dynamically now to make directive more reusable
@@ -85,24 +86,27 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                                                     'Mar,07'+
                                                     '</option>'+                   
                                                     '</select>)');
-   
                     placeHolder.append(selectStart);
                     placeHolder.append(selectEnd);
 
                     // compiling them manually since link-function doesn`t have access to the scope
                     $compile(selectStart)(scope);
                     $compile(selectEnd)(scope);
+                    $compile(placeHolder)(scope);
 
                     draw(name);
             },200);
+
 
             // when user selects a new start date chart gets drawn again
             scope.$watch('first', function(newV, oldV, scope) {
                 if (angular.isDefined(newV)){
                     if (newV>=0) {
-                        RGraph.Reset(document.getElementById('name1'));
-                        var name = 'name1';
-                        draw(name,newV,last);
+                        //keep canvas but remove content
+                        var existingID = document.querySelectorAll('*[id^="name"]')[0].id;
+                        RGraph.Reset(document.getElementById(existingID));
+                        //get ID of allready drawn charts
+                        draw(existingID,newV,last);
 
                     } 
                 }
@@ -113,8 +117,9 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
             scope.$watch('last', function(newV, oldV, scope) {
                  if (angular.isDefined(newV)){
                     if (newV<35) {
-                        var name = 'name1';
-                        draw(name,first,newV);
+                        var existingID = document.querySelectorAll('*[id^="name"]')[0].id;
+                        RGraph.Reset(document.getElementById(existingID));
+                        draw(existingID,first,newV);
                     } 
                 } 
 

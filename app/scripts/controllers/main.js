@@ -12,6 +12,7 @@ angular.module('rgraphApp')
 
         var valueArray = [];
         var timeArray = [];
+        var title = '';
 
         // creating arrays for x and y values of chart
         function arrangeInArrays(element,i,array){
@@ -24,6 +25,7 @@ angular.module('rgraphApp')
         // entering JSON to extract only the needed content
         for(var key in data){
           var datainner = data[key];
+          title = key;
           for(var keyinner in datainner){
             var arrayBoth = datainner[keyinner];
             arrayBoth.forEach(arrangeInArrays);
@@ -32,9 +34,11 @@ angular.module('rgraphApp')
 
         // attaching the to arrays needed for chart display to one data object
         $scope.data = {
+          title: title,
           time: timeArray,
           value: valueArray,
         };
+        console.log(title);
 
     
         // creating an longer version of the datestrings for display in title

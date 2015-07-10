@@ -39,8 +39,8 @@ A factory is giving you the possibility to do http-requests if you pass in an UR
 Some basic tests are checking for the creation of elements.
 
 On mouseover a tooltip shows you each dates cost.
-Using a selector the user can select the first and last date to have an influence one the min and max value on the x-axis.
-It could be nice to update the charts rather than removing them and drawing new ones, especially because it´s breaking once you add multiple charts on one page.
+Using a select-tag the user can select the first and last date to have an influence one the min and max value on the x-axis.
+
 
 
 
