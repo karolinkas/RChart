@@ -38,7 +38,7 @@ describe('Controller: MainCtrl', function () {
 
   it('check if data is on controller scopes', function() {
     httpBackend.expectGET(scope.url);
-    expect(scope.data).toEqual({ time: [ 'Feb,01', 'Feb,02' ], value: [ 0, 0 ] });
+    expect(scope.data).toEqual({ title: 'Deposit 5k.Block 132', time: [ 'Feb,01', 'Feb,02' ], value: [ 0, 0 ] });
    
   });
 });

@@ -38,7 +38,6 @@ angular.module('rgraphApp')
           time: timeArray,
           value: valueArray,
         };
-        console.log(title);
 
     
         // creating an longer version of the datestrings for display in title

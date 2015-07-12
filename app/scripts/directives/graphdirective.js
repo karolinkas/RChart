@@ -74,7 +74,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     var selectStart = angular.element('<select id="first"'+ 
                                                       'ng-model="first"'+
                                                       'ng-options="index as moment for (index,moment) in data.time">'+
-                                                      '<option value="" disabled selected>'+
+                                                      '<option value="" selected>'+
                                                       'Feb,01'+
                                                       '</option>'+
                                                       '</select>'+
@@ -82,7 +82,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     var selectEnd = angular.element('<select id="last"'+ 
                                                     'ng-model="last"'+ 
                                                     'ng-options="index as moment for (index,moment) in data.time">'+
-                                                    '<option value="" disabled selected>'+
+                                                    '<option value="" selected>'+
                                                     'Mar,07'+
                                                     '</option>'+                   
                                                     '</select>)');
@@ -104,8 +104,8 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     if (newV>=0) {
                         //keep canvas but remove content
                         var existingID = document.querySelectorAll('*[id^="name"]')[0].id;
-                        RGraph.Reset(document.getElementById(existingID));
                         //get ID of allready drawn charts
+                        RGraph.Reset(document.getElementById(existingID));
                         draw(existingID,newV,last);
 
                     } 
