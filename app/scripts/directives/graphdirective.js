@@ -74,7 +74,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     var selectStart = angular.element('<select id="first"'+ 
                                                       'ng-model="first"'+
                                                       'ng-options="index as moment for (index,moment) in data.time">'+
-                                                      '<option value="" selected>'+
+                                                      '<option value="" disabled selected>'+
                                                       'Feb,01'+
                                                       '</option>'+
                                                       '</select>'+
@@ -82,7 +82,7 @@ angular.module('rgraphApp').directive('graphDirective', ['$timeout','$compile', 
                     var selectEnd = angular.element('<select id="last"'+ 
                                                     'ng-model="last"'+ 
                                                     'ng-options="index as moment for (index,moment) in data.time">'+
-                                                    '<option value="" selected>'+
+                                                    '<option value="" disabled selected>'+
                                                     'Mar,07'+
                                                     '</option>'+                   
                                                     '</select>)');
